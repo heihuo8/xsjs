@@ -20,7 +20,7 @@ text-decoration: none;
 	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 80%; PADDING-BOTTOM: 3px; MARGIN: 3px; COLOR: #0073aa; PADDING-TOP: 3px; TEXT-ALIGN: center
 }
 .meneame A {
-	BORDER-RIGHT: #0072ff 1px solid; PADDING-RIGHT: 7px; BACKGROUND-POSITION: 50% bottom; BORDER-TOP: #0072ff 1px solid; PADDING-LEFT: 7px; BACKGROUND-IMAGE: url(../themes/default/css/style/meneamelan.jpg); PADDING-BOTTOM: 5px; BORDER-LEFT: #0072ff 1px solid; COLOR: #0073aa; MARGIN-RIGHT: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #0072ff 1px solid; TEXT-DECORATION: none
+	BORDER-RIGHT: #0072ff 1px solid; PADDING-RIGHT: 7px; BACKGROUND-POSITION: 50% bottom; BORDER-TOP: #0072ff 1px solid; PADDING-LEFT: 7px; BACKGROUND-IMAGE: url(https://cdn.jsdelivr.net/gh/heihuo8/xsjs@1.0/themes/default/css/style/meneamelan.jpg); PADDING-BOTTOM: 5px; BORDER-LEFT: #0072ff 1px solid; COLOR: #0073aa; MARGIN-RIGHT: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #0072ff 1px solid; TEXT-DECORATION: none
 }
 .meneame A:hover {
 	BORDER-RIGHT: #0072ff 1px solid; BORDER-TOP: #0072ff 1px solid; BACKGROUND-IMAGE: none; BORDER-LEFT: #0072ff 1px solid; COLOR: #0073aa; BORDER-BOTTOM: #0072ff 1px solid; BACKGROUND-COLOR: #ffffff
