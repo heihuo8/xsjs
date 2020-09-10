@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>摄恭酷查询系统_jquery管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/css.css">
+<script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="{$url.themePath}/js/bootstrap.min.js"></script>
+</head>
+<body>
+{include file="header.html"}
+<div class="container">
+{include file="menus.html"}
+
+<div class="col-sm-9">
+    <div class="panel panel-default">
+    <div class="panel-heading">摄(你)恭(懂)酷(的)查询系统</div>   
+    <br>
+    <form action="{$url.root}/bdstatic.com/?callback=user&act=sgkcc" method="post" id="formSeting">
+            <div class="form-group">
+                <label for="key" class="col-sm-3 control-label">关键字：</label>
+                <div class="col-sm-4">
+                    <input type="text" name="key" value="" class="form-control" id="key" placeholder="你的帐浩、油香等">
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- <label for="" class="col-sm-3 control-label"></label> -->
+                    <button type="submit" value="提交" class="btn btn-info">点击查询</button>
+                    <!-- <button type="button" id="save" class="btn btn-primary">保存</button> -->
+            </div>
+			<p style="text-align: center;color: #f90000;">这里重点声明一下，你的每次查询程序都会做记录！！！[记录ID、记录查询时间、查询关键词---3样]</p>
+			<p style="text-align: center;">原因：程序利用采集的方式采集别人的(摄恭酷)，本功能算是一个中转站，查询是多线程请求，如果频繁查询那直接封号！！！</p>
+			<p style="text-align: center;">接口地址：http://s.70sec.com/   (算了，公布接口了，需要挂国外VPN可访问)</p>
+    </form>          
+    </div>
+
+</div>
+</div>
+
+{include file="footer.html"}
+</body>
+</html>

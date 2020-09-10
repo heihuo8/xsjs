@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>wordpress博客插件功能页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/css.css">
+<script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="{$url.themePath}/js/bootstrap.min.js"></script>
+</head>
+<body>
+	{include file="header.html"}
+<div class="container">
+<form class="form-register" id="formRegister" action="{$url.root}/register-zhcg/" method="post">
+<div class="panel panel-default">
+  <div class="panel-heading">米吗召回</div>
+  <div class="panel-body">
+
+<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon">
+<i class="glyphicon glyphicon-user"></i>
+</span>
+<input class="form-control ng-pristine ng-invalid ng-invalid-required valid" type="text" placeholder="请输入注册时的用户名" id="user" name="user">
+<iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></div>
+</div>
+<div class="form-group">
+<div class="input-group">
+<span class="input-group-addon">
+<i class="glyphicon glyphicon-envelope"></i>
+</span>
+<input class="form-control ng-pristine ng-invalid ng-invalid-required valid" type="text" placeholder="请输入注册时的油箱" id="email" name="email">
+<iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></div>
+</div>
+
+						
+<button type="submit" class="btn btn-success" style="float:right;">提交注册</button>
+</div>
+<p style="text-align: center;">注册时已提示需填有效油箱，因自己遗忘用户名、油箱等问题一概不管！！！</p>
+<p style="text-align: center;">新密码会直接发送至你油箱，每个账号每天只支持3次找回！</p>
+<p style="text-align: center;">除本站程序问题一律自责！</p>
+<p style="text-align: center;">有任何问题请去留言板： {$url.root}/liuyan/</p>
+</div>
+</div>
+</form>
+	<!-- main End -->
+
+{include file="footer.html"}
+</body>
+</html>

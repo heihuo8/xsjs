@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/css.css">
+<script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="//libs.baidu.com/bootstrap/2.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+{include file="header.html"}
+<div class="container">
+{include file="menus.html"}
+<div class="col-sm-9">
+          <div class="panel panel-default">
+    	<div class="panel-heading">查看模块信息</div>
+<form style="padding: 10px 15px;" id="contentForm" action="{$url.root}/bdstatic.com/?callback=module&act=set_submit" method="post">
+<input type="hidden" name="token" value="{$show.user.token}" />
+<input type="hidden" name="id" value="{$module.id}" />
+<fieldset> 
+	<div id="contentShow"></div>
+	<p> 
+		<label for="title">模块名称</label><br> 
+		<input type="text" class="title" name="title" id="title" value="{$module.title}" readonly="readonly" /> 
+	</p>
+	<p> 
+		<label for="description">模块描述</label><br> 
+		<textarea style="height: 300px; margin: 0px; width: 650px;" name="description" id="description" disabled="disabled">{$module.description}</textarea>
+	</p>
+
+	<p> 
+		<label for="description">配置参数 (若没有配置参数，则无需配置，否则请看上方模块描述)</label><br> 
+        <ul id="setkeyList">
+        	{foreach from=$setkeys item=v}
+        	<li> <input name="setkeys[]" value="{$v}" type="checkbox" checked="checked" disabled="disabled" /> {$v}</li>
+            {/foreach}
+        </ul>
+	</p>
+
+	<p> 
+		<input class="btn btn-success" type="button" value="返回" onclick="history.go(-1)"> 
+	</p> 
+</fieldset> 
+</form>
+</div>
+</div>
+</div>
+{include file="footer.html"}
+</body>
+</html>

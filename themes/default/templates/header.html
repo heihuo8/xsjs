@@ -1,0 +1,73 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+   <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+		  {if $show.user.userId>0}
+          <a class="navbar-brand" href="{$url.root}/bdstatic.com/">jquery云库加速平台</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+			<!-- {if $act=='ipadd' || $act=='ipaddsave'}
+            <li><a href="{$url.root}/bdstatic.com/">平台主页</a></li>
+			<li class="active"><a href="{$url.root}/bdstatic.com/?callback=user&act=ipadd" title="IP对应详细地址查询功能-非常精确">精准IP地址查询</a></li>
+			{else}
+            <li class="active"><a href="{$url.root}/bdstatic.com/">平台主页</a></li>
+			<li><a href="{$url.root}/bdstatic.com/?callback=user&act=ipadd" title="IP对应详细地址查询功能-非常精确">精准IP地址查询</a></li>
+			{/if} 因为百度及社工裤已经关闭，所以本站只能暂时关闭-->
+			<!-- <li><a href="{$url.root}/bdstatic.com/?callback=user&act=sgk" target="_black" title="摄宫窟">摄宫窟</a></li>  因接口失效，此功能已废弃。-->
+			   <li class="active"><a href="///jquer.cc/">主页</a></li>
+			 <li ><a href="{$url.root}/bdstatic.com/?callback=user&act=ipadd" style="color:#FF0000">精准查询！</a></li>
+			<li><a href="{$url.root}/bdstatic.com/?callback=user&act=piccode" target="_black" title="代码植入图片内系统：可以把任何代码植入图片内，且不破坏图片格式。致使程序在检测图片时，依然是正常的图片。">图片伪造功能</a></li>
+			<li><a href="http://xssor.alienx.cn/" target="_black" style="color:#FF0000">XSS'or</a></li>
+		   {else}
+          <a class="navbar-brand" href="{$url.root}/login/">jquery云库加速平台</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{$url.root}/login/">返回平台主页</a></li>
+			<li ><a href="{$url.root}/login/#请登录后使用此功能">IP对应详细地址查询</a></li>
+			{/if}
+		
+          </ul>
+		  {if $show.user.userId<1}
+		  	<ul class="nav navbar-nav navbar-right ng-scope" ng-controller="user_ctrl" id="header_me">
+                <li>
+                    <a class="mr_15" wt-tracker="Header|Menu|Goto Signin" href="{$url.root}/login/">登录</a>
+                <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></li>
+                <li>
+                    <a href="{$url.root}/register/" wt-tracker="Header|Menu|Goto Apply">注册</a>
+                </li>
+                
+            </ul>
+			{/if}
+		  {if $show.user.userId>0}
+		  <ul class="nav navbar-nav navbar-right ng-scope" ng-controller="user_ctrl" id="header_me">
+                <li>
+                    <a href="{$url.root}/bdstatic.com/?callback=user&act=seting" wt-tracker="Header|Menu|Goto Apply">用户：{$show.user.userName} {if $show.user.huiyuan>0}[赞助会员]{else}[普通会员]{/if}</a>
+                <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></li>
+                <li>
+                    <a href="{$url.root}/bdstatic.com/?callback=user&act=seting" wt-tracker="Header|Menu|Goto Apply">个人设置</a>
+                </li>
+                <li>
+                    <a href="{$url.root}/bdstatic.com/?callback=user&act=ipurlseting" wt-tracker="Header|Menu|Goto Apply">URL黑名单设置</a>
+                </li>
+				{if $show.user.adminLevel>0}
+				  <li>
+                    <a href="{$url.root}/bdstatic.com/?callback=user&act=invite" wt-tracker="Header|Menu|Goto Apply">邀请</a>
+                </li>
+				  <li>
+                    <a href="{$url.root}/admin/" wt-tracker="Header|Menu|Goto Apply">超管后台</a>
+                </li>
+				{/if}
+                <li>
+                    <a href="{$url.root}/log-out/" wt-tracker="Header|Menu|Goto Apply">退出登陆</a>
+                </li>
+            </ul>
+			{/if}
+        </div><!--/.nav-collapse -->
+      <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></div>
+    </div>

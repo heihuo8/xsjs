@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jquery管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/css.css">
+<script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="//libs.baidu.com/bootstrap/2.3.1/js/bootstrap.min.js"></script>
+{literal}
+<style>
+ul { margin:0}
+</style>
+{/literal}
+</head>
+<body>
+{include file="header.html"}
+<div class="container">
+{include file="menus.html"}
+<div class="col-sm-9">
+          <div class="panel panel-default">
+    	<div class="panel-heading">项目代码</div>
+		<div style="padding: 10px 15px;">
+<caption><h3>项目名称: {$project.title}</h3></caption>
+<label>如何使用：</label>
+<p>将如下代码植入怀疑出现xss的地方（注意'的转义），即可在 <a href="{$url.root}/bdstatic.com/?callback=project&act=view&id={$project.id}">项目内容</a> 观看XSS效果。</p>
+<p>当前项目URL地址为：{$codeurl}&nbsp; &nbsp; &nbsp; &nbsp; <b style="color: #0012ff;" title=
+"如果https不可用，本提示会被删掉">【注意新增https，插入对方网站代码前缀http或者https都可】</b> </p>
+<pre>
+{$scriptShow1|replace:"http:":""}
+</pre>
+</p>
+<p>
+或者
+</p>
+<p>
+<pre>
+{$xinzeng1}
+</pre>
+<pre>
+{$xinzeng2}
+</pre>
+<pre>
+{$scriptShow2}
+</pre>
+<pre>
+{$shortShow3}
+</pre>
+</p>
+
+<p>
+
+<p> 
+下方XSS代码过一般WAF [注意如果直接把代码放入Burp，则需要把下方代码进行<a href="http://tool.chinaz.com/tools/urlencode.aspx" target="_blank">URL编码</a>]
+</p> 
+
+<p> 
+<pre>
+{$shortShow5|replace:"\\\\":"\\"}
+</pre>
+</p>
+
+<p> 
+若使用下方XSS代码请注意(下面代码会引起网页空白不得已慎用，注意如果使用下面的代码，一定要勾选“基础默认XSS”模块)
+</p> 
+
+<p> 
+<pre>
+{$shortShow4}
+</pre>
+</p>
+<p> 
+↓↓↓！~极限代码~！(可以不加最后的>回收符号，下面代码已测试成功)↓↓↓
+</p> 
+
+<p> 
+<pre>
+{$jixiandaima}
+</pre>
+</p>
+<br/><br/>
+<hr/><hr/>
+<p style="color: #ff0000;"> 
+↓↓↓图片探测系统，只要对方网站可以调用外部图片(或可自定义HTML)，请填入下方图片地址(代码)，则探测对方数据↓↓↓<br/></p> 
+图片插件一：&nbsp; &nbsp; <b style="color: #0012ff;">{$codeurl}/test.jpg </b> &nbsp; &nbsp;【<a href="https://woj.app/1785.html" target="_blank">若使用此探测，必须勾选‘默认模块’！！！点击查看使用说明</a>】
+<p> 
+<pre>
+{$img1}
+</pre>
+</p>
+<p> 
+<pre>
+{$img2}
+</pre>
+</p>
+<hr/>
+<p> 
+图片插件二：&nbsp; &nbsp; 【<a href="https://woj.app/3377.html" target="_blank">若使用此探测，建议勾选‘默认模块’。点击查看使用说明</a>】<br/></p> 
+<p>
+{$picxssprint}
+</p> 
+<hr/>
+<p>
+
+{if $ty=='create'}
+<input class="btn btn-success" type="button" value="完成" onclick="location.href='{$url.root}/bdstatic.com/'" />
+{else}
+<input class="btn btn-success" type="button" value="返回首页" onclick="location.href='{$url.root}/bdstatic.com/'" />
+{/if}
+</p>
+</div>
+</div>
+</div>
+</div>
+{include file="footer.html"}
+</body>
+</html>

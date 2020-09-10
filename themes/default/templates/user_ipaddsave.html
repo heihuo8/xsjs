@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IP对应详细地址查询结果_jquery管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{$url.themePath}/css/css.css">
+<script src="//libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="{$url.themePath}/js/bootstrap.min.js"></script>
+{literal}
+<script>
+function CheckAll(obj){
+	if($(obj).is(":checked")){
+		$(".checon").attr("checked","checked");
+	}else{
+		$(".checon").removeAttr("checked");
+	}
+}
+</script>
+{/literal}
+</head>
+<body>
+{include file="header.html"}
+<div class="container">
+{include file="menus.html"}
+
+<div class="col-sm-9">
+    <div class="panel panel-default">
+    <div class="panel-heading">{$ip} 对应详细地址查询结果</div>   
+    <br><form class="form-horizontal">
+            <div class="form-group">
+                <label for="smtpserver" class="col-sm-3 control-label">维度：</label>
+                <div class="col-sm-4">
+                    <div class="form-control">{$weidu}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="smtpserver" class="col-sm-3 control-label">经度：</label>
+                <div class="col-sm-4">
+                    <div class="form-control">{$jingdu}</div>
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="smtpserver" class="col-sm-3 control-label">结果半径：</label>
+                <div class="col-sm-4">
+                    <div class="form-control">{$radius}米</div>
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="smtpserver" class="col-sm-3 control-label">定位可信度：</label>
+                <div class="col-sm-4">
+                    <div class="form-control">{$confidence}</div>
+                </div>&nbsp最大值为1
+            </div>   
+             <div class="form-group">
+                <label for="smtpserver" class="col-sm-3 control-label">本次定位时间：</label>
+                <div class="col-sm-4">
+                    <div class="form-control">{$loc_time}</div>
+                </div>
+            </div>  
+             <div class="form-group">
+                <label for="smtpserver" class="col-sm-3 control-label">实际地址为：</label>
+                <div class="col-sm-7">
+                    <div class="form-control">{$formatted_address} &nbsp {$business}</div>
+                </div>
+            </div>
+			<div class="form-group">
+			<center><a href="{$url.root}/bdstatic.com/?callback=user&act=ipadd" class="btn btn-primary">返回</a></center>
+			</div>
+			<p style="text-align: center;">所有数据基于百度API接口大数据调用，如果未查到，那基本就是百度数据库中没有。后期可能增加其他接口。</p>
+			</form>
+</div>
+
+</div>
+</div>
+
+{include file="footer.html"}
+</body>
+</html>

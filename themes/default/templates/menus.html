@@ -1,0 +1,47 @@
+<div class="col-sm-3">
+	<div class="panel panel-default">
+		<div class="panel-heading"><a style="color: #2a6496;" href="{$url.root}/bdstatic.com/">我的项目</a><a style="float:right;" href="{$url.root}/bdstatic.com/?callback=project&act=create">创建</a></div> 
+			<div class="panel-body">
+      			<ul class="nav nav-stacked">
+						{foreach from=$projects item=v}
+						<li><a href="{$url.root}/bdstatic.com/?callback=project&act=view&id={$v.id}">{$v.title} - [项目ID:{$v.id}]</a></li>
+						{/foreach}
+						</ul>
+	</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading"><a style="color: #2a6496;" href="{$url.root}/bdstatic.com/?callback=module">我的模块</a><a style="float:right;" href="{$url.root}/bdstatic.com/?callback=module&act=create">创建</a></div> 
+			<div class="panel-body">
+      			<ul class="nav nav-stacked">
+		{foreach from=$modules item=v}
+		{if $v.isOpen==0 || ($v.isOpen==1 && $v.isAudit==0)}
+		<li><a href="{$url.root}/bdstatic.com/?callback=module&act=set&id={$v.id}">{$v.title}</a></li>
+		{/if}
+		{/foreach}
+						</ul>
+	</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading"><a style="color: #2a6496;" href="{$url.root}/bdstatic.com/?callback=module">公共模块</a></div> 
+			<div class="panel-body">
+      			<ul class="nav nav-stacked">
+		{foreach from=$modules item=v}
+		{if $v.isOpen==1 && $v.isAudit==1}
+		<li><a href="{$url.root}/bdstatic.com/?callback=module&act=view&id={$v.id}">{$v.title}</a></li>
+		{/if}
+		{/foreach}
+						</ul>
+	</div>
+	</div>
+	
+		<div class="panel panel-default">
+		<div class="panel-heading"><a style="color: #2a6496;" >功能墙</a></div> 
+			<div class="panel-body">
+      			<ul class="nav nav-stacked">
+		<li><a href="{$url.root}/bdstatic.com/?callback=user&act=jiapoc"  target="_blank">聊天poc</a></li><!-- 里面所有关于本人的信息您都可以删除，只要对您来说碍眼的话。 ^-^ 如果您不删除，特别欢迎您没事过来本人博客坐坐。-->
+						</ul>
+	</div>
+	</div>
+</div>
